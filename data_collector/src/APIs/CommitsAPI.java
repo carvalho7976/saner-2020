@@ -36,8 +36,10 @@ public class CommitsAPI {
 
 		for (String hash : hashs) {
 
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/commits/" + hash + "\"";
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/commits/" + hash + "\"";
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,  "https://api.github.com/repos/" + url + "/commits/" + hash + "\""};
+
 			JSONManager.getJSON(path + hash + ".json", command, true);
 
 		}
@@ -48,9 +50,10 @@ public class CommitsAPI {
 		final String path = Util.getCommitsFolderPath(project);
 		for (int j = 1; j < 1100; j++) {
 
-			final String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/commits?page=" + j + "\"";
+			//final String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/commits?page=" + j + "\"";
 			boolean empty = false;
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD, "https://api.github.com/repos/" + url + "/commits?page=" + j + "\""};
 
 			empty = JSONManager.getJSON(path + j + ".json", command, true);
 

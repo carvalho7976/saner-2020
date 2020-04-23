@@ -25,8 +25,9 @@ public class CommentsAPI {
 
 		for (int i = 1; i < 10000; i++) {
 
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/comments?page=" + i + "\"";
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/comments?page=" + i + "\"";
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,  "https://api.github.com/repos/" + url + "/comments?page=" + i + "\""};
 
 			boolean empty = JSONManager.getJSON(path + "comments_" + i + ".json", command, false);
 
@@ -49,8 +50,9 @@ public class CommentsAPI {
 
 		for (String id : ids) {
 
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/comments/" + id + "\"";
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/comments/" + id + "\"";
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,  "https://api.github.com/repos/" + url + "/comments/" + id + "\""};
 
 			JSONManager.getJSON(path + id + ".json", command, false);
 

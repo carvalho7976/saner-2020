@@ -24,8 +24,10 @@ public class IssuesAPI {
 		String path = Util.getGeneralIssuesPath(project);
 
 		for (int i = 1; i < 1000; i++) {
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/issues?state=all&page=" + i + "\"";
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/issues?state=all&page=" + i + "\"";
+			
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD, "https://api.github.com/repos/" + url + "/issues?state=all&page=" + i + "\""};
 
 			boolean empty = JSONManager.getJSON(path + i + ".json", command, false);
 
@@ -43,9 +45,11 @@ public class IssuesAPI {
 	
 		for (int i = 1; i < 10000; i++) {
 	
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/issues/comments?page=" + i + "\"";
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/issues/comments?page=" + i + "\"";
 	
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD, "https://api.github.com/repos/" + url + "/issues/comments?page=" + i + "\""};
+
 			boolean empty = JSONManager.getJSON(path + "comments_" + i + ".json", command, false);
 	
 			if (empty) {
@@ -73,9 +77,10 @@ public class IssuesAPI {
 				f.mkdirs();
 			}
 	
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/issues/" + id + "\"";
-	
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/issues/" + id + "\"";
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD, "https://api.github.com/repos/" + url + "/issues/" + id + "\""};
+
 			JSONManager.getJSON(path + "individual/" + id + ".json", command, false);
 	
 		}

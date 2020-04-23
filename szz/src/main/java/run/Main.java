@@ -24,17 +24,17 @@ import java.io.*;
 public class Main {
 
     @Parameter(names = "--input", description = "The path to the input bug reports directory", order = 1)
-    private String input = "";
+    private String input = "/Users/rogeriocarvalho/Documents/Replication-Data/Bug-reports";
 
     @Parameter(names = "--output", description = "The path to the output bug-introducing changes directory", order = 2)
-    private String output = "";
+    private String output = "/Users/rogeriocarvalho/Documents/output";
 
     @Parameter(names = "--repository", description = "The path to the repository", order = 3)
     private String repository = "";
 
     @Parameter(names = "--url", description = "The url of the Git repository to clone, i.e., " +
             "https://github.com/square/okhttp.git")
-    private String url = "";
+    private String url = "https://github.com/elastic/elasticsearch.git";
 
     @Parameter(names = "--diffj", description = "The path to the DiffJ jar executable", order = 4)
     private String diffj = "diffj-master-1.6.3.jar";

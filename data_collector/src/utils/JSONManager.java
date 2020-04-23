@@ -12,8 +12,9 @@ import java.util.Calendar;
 
 public class JSONManager {
 
-	public static boolean getJSON(String path, String command, boolean replace) {
-
+	public static boolean getJSON(String path, String[] command, boolean replace) {
+		
+		
 		File file = new File(path);
 
 		if (!replace) {
@@ -23,6 +24,7 @@ public class JSONManager {
 		}
 
 		try {
+			
 
 			boolean wait = true;
 			long time = 0;
@@ -32,8 +34,10 @@ public class JSONManager {
 
 			while (wait) {
 
-				Process p = Runtime.getRuntime().exec(command);
-
+				ProcessBuilder processBuilder = new ProcessBuilder(command);
+				Process p = processBuilder.start();
+				
+				
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
 				String a = null;

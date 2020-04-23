@@ -40,8 +40,9 @@ public class PullsAPI {
 					id = l[1];
 				}
 
-				String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-						+ " \"https://api.github.com/repos/" + url + "/pulls/" + id + "\"";
+				//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+				//		+ " \"https://api.github.com/repos/" + url + "/pulls/" + id + "\"";
+				String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,"https://api.github.com/repos/" + url + "/pulls/" + id + "\""};
 
 				boolean f = JSONManager.getJSON(pathIndividual + id + ".json", command, false);
 
@@ -77,9 +78,10 @@ public class PullsAPI {
 			
 			for (int i = 1; i <= 50; i++) {
 				
-				String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-						+ " \"https://api.github.com/repos/" + url + "/pulls/" + id + "/comments?page=" + i + "\"";
+				//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+				//		+ " \"https://api.github.com/repos/" + url + "/pulls/" + id + "/comments?page=" + i + "\"";
 				
+				String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,"https://api.github.com/repos/" + url + "/pulls/" + id + "/comments?page=" + i + "\""};
 
 				boolean empty = JSONManager.getJSON(pathPullsComments + id + "/comments_" + i + ".json", command, true);
 
@@ -100,9 +102,10 @@ public class PullsAPI {
 	
 		for (int i = 1; i < 2000; i++) {
 	
-			String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
-					+ " \"https://api.github.com/repos/" + url + "/pulls" + "?state=all&page=" + i + "\"";
-	
+			//String command = LocalPaths.CURL + " -i -u " + Tokens.USERNAME + ":" + Tokens.PASSWORD
+			//		+ " \"https://api.github.com/repos/" + url + "/pulls" + "?state=all&page=" + i + "\"";
+			String[] command = new String[]{"curl", "-i", "-u", Tokens.USERNAME + ":" + Tokens.PASSWORD,"https://api.github.com/repos/" + url + "/pulls" + "?state=all&page=" + i + "\""};
+
 			boolean empty = JSONManager.getJSON(path + i + ".json", command, false);
 	
 			if (empty) {
