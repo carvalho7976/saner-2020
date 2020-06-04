@@ -3,7 +3,7 @@
 public class Tokens {
 
 	public static final String USERNAME = "CARVALHO7976";
-	public static final String PASSWORD = "ddf24019bfca8810a0c58dffe09880285a37f50d";
+	public static final String PASSWORD = "e063386a010ace2141b53a772a6d77d851770c2d";
 	
 	//public static final String USERNAME = "andersonss";
 	//public static final String PASSWORD = "06746c92deb866b34f444e6150b2078b31fcca5e";
